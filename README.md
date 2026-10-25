@@ -1,6 +1,6 @@
 # Qwen-Image-Edit Rapid AIO NSFW — RunPod Serverless worker
 
-A ready-to-build [RunPod Serverless](https://runpod.io?ref=qpguwapm) worker for **Qwen-Image-Edit Rapid AIO NSFW v19** — edit a picture by writing what to change. Model, text encoder and VAE in one file, 4 steps. Based on the official [`runpod/worker-comfyui`](https://github.com/runpod-workers/worker-comfyui).
+A ready-to-build [RunPod Serverless](https://runpod.io?ref=qpguwapm) worker for **[Qwen-Image-Edit Rapid AIO NSFW v19](https://huggingface.co/Phr00t/Qwen-Image-Edit-Rapid-AIO)** — edit a picture by writing what to change. Model, text encoder and VAE in one file, 4 steps. Based on the official [`runpod/worker-comfyui`](https://github.com/runpod-workers/worker-comfyui).
 
 Models are baked into the image, so a cold start does not re-download anything.
 
@@ -10,7 +10,7 @@ Models are baked into the image, so a cold start does not re-download anything.
 
 | File | Source | Size |
 |---|---|---|
-| `checkpoints/qwen_rapid_aio_nsfw_v19.safetensors` | Phr00t/Qwen-Image-Edit-Rapid-AIO (Apache 2.0) | 28.4 GB |
+| `checkpoints/qwen_rapid_aio_nsfw_v19.safetensors` | [Phr00t/Qwen-Image-Edit-Rapid-AIO](https://huggingface.co/Phr00t/Qwen-Image-Edit-Rapid-AIO) (Apache 2.0) | 28.4 GB |
 
 Just the model as its creator released it — no LoRAs, no extra nodes. All files are checked by SHA-256 at build time. ComfyUI is upgraded to 0.39.0.
 
