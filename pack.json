@@ -1,0 +1,151 @@
+{
+ "format": "pack/1",
+ "engine": "comfyui",
+ "kind": "Image To Image",
+ "id": "qwen-edit-rapid-aio",
+ "label": "Qwen-Image-Edit Rapid AIO NSFW",
+ "note": "Write what to change: \"make her hair red\". One change at a time keeps the face. The picture is scaled to about 1 megapixel.",
+ "workflow": {
+  "4": {
+   "class_type": "CheckpointLoaderSimple",
+   "inputs": {
+    "ckpt_name": "qwen_rapid_aio_nsfw_v19.safetensors"
+   }
+  },
+  "57": {
+   "class_type": "LoadImage",
+   "inputs": {
+    "image": "source_image.png"
+   }
+  },
+  "61": {
+   "class_type": "ImageScaleToTotalPixels",
+   "inputs": {
+    "image": [
+     "57",
+     0
+    ],
+    "upscale_method": "lanczos",
+    "megapixels": 1.0,
+    "resolution_steps": 16
+   }
+  },
+  "6": {
+   "class_type": "TextEncodeQwenImageEditPlus",
+   "inputs": {
+    "clip": [
+     "4",
+     1
+    ],
+    "prompt": "",
+    "image1": [
+     "61",
+     0
+    ]
+   }
+  },
+  "62": {
+   "class_type": "VAEEncode",
+   "inputs": {
+    "pixels": [
+     "61",
+     0
+    ],
+    "vae": [
+     "4",
+     2
+    ]
+   }
+  },
+  "63": {
+   "class_type": "ReferenceLatent",
+   "inputs": {
+    "conditioning": [
+     "6",
+     0
+    ],
+    "latent": [
+     "62",
+     0
+    ]
+   }
+  },
+  "13": {
+   "class_type": "ConditioningZeroOut",
+   "inputs": {
+    "conditioning": [
+     "63",
+     0
+    ]
+   }
+  },
+  "3": {
+   "class_type": "KSampler",
+   "inputs": {
+    "model": [
+     "4",
+     0
+    ],
+    "positive": [
+     "63",
+     0
+    ],
+    "negative": [
+     "13",
+     0
+    ],
+    "latent_image": [
+     "62",
+     0
+    ],
+    "seed": 0,
+    "steps": 4,
+    "cfg": 1,
+    "sampler_name": "euler_ancestral",
+    "scheduler": "beta",
+    "denoise": 1
+   }
+  },
+  "8": {
+   "class_type": "VAEDecode",
+   "inputs": {
+    "samples": [
+     "3",
+     0
+    ],
+    "vae": [
+     "4",
+     2
+    ]
+   }
+  },
+  "9": {
+   "class_type": "SaveImage",
+   "inputs": {
+    "images": [
+     "8",
+     0
+    ],
+    "filename_prefix": "qwen_edit"
+   }
+  }
+ },
+ "prompt": [
+  [
+   "6",
+   "prompt"
+  ]
+ ],
+ "seed": [
+  [
+   "3",
+   "seed"
+  ]
+ ],
+ "image": [
+  [
+   "57",
+   "image"
+  ]
+ ]
+}
