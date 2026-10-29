@@ -1,5 +1,7 @@
 # Qwen-Image-Edit Rapid AIO NSFW — RunPod Serverless worker
 
+> 🔞 **Adult (18+) · NSFW** — part of afterdark-workers, workers for uncensored adult image and video models.
+
 A ready-to-build [RunPod Serverless](https://runpod.io?ref=qpguwapm) worker for **[Qwen-Image-Edit Rapid AIO NSFW v19](https://huggingface.co/Phr00t/Qwen-Image-Edit-Rapid-AIO)** — edit a picture by writing what to change. Model, text encoder and VAE in one file, 4 steps. Based on the official [`runpod/worker-comfyui`](https://github.com/runpod-workers/worker-comfyui).
 
 Models are baked into the image, so a cold start does not re-download anything.
